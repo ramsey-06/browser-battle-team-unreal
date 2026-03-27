@@ -25,7 +25,7 @@ export default function Departments() {
               // ✅ MAKE CARD CLICKABLE
               <Link
                 key={dept.id}
-                to={`/department/${encodeURIComponent(dept.name)}`}
+                to={`/department/${dept.slug}`}
                 className="block"
               >
                 <Card className="group flex flex-col cursor-pointer hover:scale-105 transition-transform duration-300">
