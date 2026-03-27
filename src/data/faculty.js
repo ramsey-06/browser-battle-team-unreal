@@ -5,7 +5,7 @@ export const faculty = [
     title: 'Professor & Dean',
     department: 'Computer Science',
     specialty: 'Artificial Intelligence & Machine Learning',
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b494?w=300&q=80',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a',
     email: 'e.voss@ashford.edu',
     publications: 48,
     joined: 2008,
