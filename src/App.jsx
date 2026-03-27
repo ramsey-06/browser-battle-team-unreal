@@ -13,6 +13,11 @@ import Gallery from './pages/Gallery';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
+import Research from './pages/Research';
+import Alumni from './pages/Alumni';
+import Placement from './pages/Placement';
+
+
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
     try {
@@ -50,7 +55,11 @@ export default function App() {
           <Route path="/student-life" element={<StudentLife />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/alumni" element={<Alumni />} />
+          <Route path="/placement" element={<Placement />} />
           <Route path="*" element={<NotFound />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
