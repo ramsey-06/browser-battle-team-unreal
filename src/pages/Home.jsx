@@ -1,3 +1,4 @@
+import * as Icons from "lucide-react";
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -257,33 +258,38 @@ export default function Home() {
           </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {featuredDepts.map((dept, i) => (
-              <Reveal key={dept.id} delay={i * 60}>
-                <Card className="group h-full flex flex-col">
-                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${dept.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    {dept.icon}
-                  </div>
-                  <h3 className="font-display text-xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
-                    {dept.name}
-                  </h3>
-                  <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: 'var(--text-secondary)' }}>
-                    {dept.description}
-                  </p>
-                  <div
-                    className="flex items-center gap-3 text-xs pt-4"
-                    style={{ borderTop: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}
-                  >
-                    <span>
-                      <strong style={{ color: 'var(--text-primary)' }}>{dept.students.toLocaleString()}</strong> students
-                    </span>
-                    <span>·</span>
-                    <span>
-                      <strong style={{ color: 'var(--text-primary)' }}>{dept.programs}</strong> programs
-                    </span>
-                  </div>
-                </Card>
-              </Reveal>
-            ))}
+
+            {featuredDepts.map((dept, i) => {
+              const Icon = Icons[dept.icon];   // ✅ correct place
+
+              return (
+                <Reveal key={dept.id} delay={i * 60}>
+                  <Card className="group h-full flex flex-col">
+                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${dept.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      {Icon && <Icon className="w-5 h-5 text-white" />}
+                    </div>
+                    <h3 className="font-display text-xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                      {dept.name}
+                    </h3>
+                    <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: 'var(--text-secondary)' }}>
+                      {dept.description}
+                    </p>
+                    <div
+                      className="flex items-center gap-3 text-xs pt-4"
+                      style={{ borderTop: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}
+                    >
+                      <span>
+                        <strong style={{ color: 'var(--text-primary)' }}>{dept.students.toLocaleString()}</strong> students
+                      </span>
+                      <span>·</span>
+                      <span>
+                        <strong style={{ color: 'var(--text-primary)' }}>{dept.programs}</strong> programs
+                      </span>
+                    </div>
+                  </Card>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
