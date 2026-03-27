@@ -1,27 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot } from 'lucide-react';
 
-const mockResponses = {
-  default: "Thanks for your question! Our admissions team can provide more details. You can also visit the Admissions page or call +1 (555) 000-1234.",
-  admission: "Ashford University accepts applications through our online portal. The next intake deadline is March 31, 2025. Visit our Admissions page for requirements and scholarships.",
-  department: "We offer 8 departments including Computer Science, Engineering, Medicine, Law, Business, Arts, Natural Sciences, and Social Sciences. Each has unique programs and research opportunities.",
-  event: "Upcoming events include the Research Symposium on April 15, Tech Career Fair on March 28, and Spring Cultural Festival on May 10. Check the Events page for full details.",
-  faculty: "Our faculty includes over 200 distinguished professors and researchers. You can browse faculty profiles on the Faculty page, including their specializations and publications.",
-  scholarship: "Ashford offers merit-based and need-based scholarships. The Presidential Scholarship covers full tuition. Contact financial aid at finaid@ashford.edu for personalized guidance.",
-  library: "The Ashford Library is open 7 AM–10 PM weekdays and 9 AM–6 PM weekends. Digital resources are available 24/7 through the Student Portal.",
-};
-
-function getResponse(message) {
-  const lower = message.toLowerCase();
-  if (lower.includes('admission') || lower.includes('apply') || lower.includes('enroll')) return mockResponses.admission;
-  if (lower.includes('department') || lower.includes('program') || lower.includes('course')) return mockResponses.department;
-  if (lower.includes('event') || lower.includes('festival') || lower.includes('symposium')) return mockResponses.event;
-  if (lower.includes('faculty') || lower.includes('professor') || lower.includes('teacher')) return mockResponses.faculty;
-  if (lower.includes('scholarship') || lower.includes('financial') || lower.includes('fee')) return mockResponses.scholarship;
-  if (lower.includes('library') || lower.includes('book') || lower.includes('resource')) return mockResponses.library;
-  return mockResponses.default;
-}
-
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -35,18 +14,59 @@ export default function ChatbotWidget() {
     if (open) messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, open]);
 
-  const sendMessage = () => {
-    if (!input.trim()) return;
-    const userMsg = { id: Date.now(), from: 'user', text: input.trim(), time: new Date() };
-    setMessages(prev => [...prev, userMsg]);
-    setInput('');
-    setTyping(true);
-    setTimeout(() => {
-      const botMsg = { id: Date.now() + 1, from: 'bot', text: getResponse(userMsg.text), time: new Date() };
-      setMessages(prev => [...prev, botMsg]);
-      setTyping(false);
-    }, 1000 + Math.random() * 500);
+const sendMessage = async () => {
+  if (!input.trim()) return;
+
+  const userMsg = {
+    id: Date.now(),
+    from: "user",
+    text: input.trim(),
+    time: new Date(),
   };
+
+  // Show user message immediately
+  setMessages((prev) => [...prev, userMsg]);
+  setInput("");
+  setTyping(true);
+
+  try {
+    // Call your API route
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: userMsg.text,
+      }),
+    });
+
+    const data = await response.json();
+
+    const botMsg = {
+      id: Date.now() + 1,
+      from: "bot",
+      text: data.reply,
+      time: new Date(),
+    };
+
+    setMessages((prev) => [...prev, botMsg]);
+
+  } catch (error) {
+    console.error("Chat error:", error);
+
+    const errorMsg = {
+      id: Date.now() + 1,
+      from: "bot",
+      text: "Sorry, something went wrong. Please try again.",
+      time: new Date(),
+    };
+
+    setMessages((prev) => [...prev, errorMsg]);
+  }
+
+  setTyping(false);
+};
 
   const handleKey = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
