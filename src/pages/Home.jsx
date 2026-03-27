@@ -21,7 +21,7 @@ const testimonials = [
   {
     name: 'Sarah Chen',
     program: 'MSc Computer Science, 2024',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b494?w=100&q=80',
+    avatar: 'https://plus.unsplash.com/premium_photo-1661777204046-d7fae72dbcdd?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: 'The research opportunities at Ashford are unparalleled. My time here transformed how I think about technology and its impact on society.',
     rating: 5,
   },
