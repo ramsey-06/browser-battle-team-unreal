@@ -2,7 +2,7 @@ export const departments = [
   {
     id: 1,
     name: 'Computer Science',
-    icon: '💻',
+    icon: "Laptop",
     description: 'Cutting-edge programs in AI, software engineering, and data science.',
     students: 1240,
     programs: 8,
@@ -12,7 +12,7 @@ export const departments = [
   {
     id: 2,
     name: 'Business Administration',
-    icon: '📊',
+    icon: "Briefcase",
     description: 'World-class MBA and undergraduate business programs.',
     students: 980,
     programs: 6,
@@ -22,7 +22,7 @@ export const departments = [
   {
     id: 3,
     name: 'Engineering',
-    icon: '⚙️',
+    icon: "Cog",
     description: 'Mechanical, civil, electrical, and chemical engineering.',
     students: 1100,
     programs: 10,
@@ -32,7 +32,7 @@ export const departments = [
   {
     id: 4,
     name: 'Arts & Humanities',
-    icon: '🎨',
+    icon: "Palette",
     description: 'Philosophy, literature, fine arts, and cultural studies.',
     students: 640,
     programs: 12,
@@ -42,7 +42,7 @@ export const departments = [
   {
     id: 5,
     name: 'Medical Sciences',
-    icon: '🏥',
+    icon: "HeartPulse",
     description: 'Medicine, nursing, pharmacy, and biomedical research.',
     students: 860,
     programs: 7,
@@ -52,7 +52,7 @@ export const departments = [
   {
     id: 6,
     name: 'Law',
-    icon: '⚖️',
+    icon: "Scale",
     description: 'Rigorous legal education with real-world practice.',
     students: 520,
     programs: 4,
@@ -62,7 +62,7 @@ export const departments = [
   {
     id: 7,
     name: 'Natural Sciences',
-    icon: '🔬',
+    icon: "Microscope",
     description: 'Physics, chemistry, biology, and environmental science.',
     students: 740,
     programs: 9,
@@ -72,7 +72,7 @@ export const departments = [
   {
     id: 8,
     name: 'Social Sciences',
-    icon: '🌍',
+    icon: "Globe",
     description: 'Psychology, sociology, political science, and economics.',
     students: 820,
     programs: 8,
