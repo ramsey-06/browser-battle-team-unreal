@@ -20,10 +20,10 @@ const DepartmentDetails = () => {
 
       {/* HEADER */}
       <div className="mb-10">
-        <h1 className="text-4xl font-bold text-white mb-3">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
           {dept.name} Department
         </h1>
-        <p className="text-gray-300 text-lg max-w-3xl">
+        <p className="text-gray-700 dark:text-gray-300 text-lg max-w-3xl">
           {dept.about}
         </p>
       </div>
