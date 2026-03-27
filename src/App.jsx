@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// Layout
 import Layout from './components/layout/Layout';
+
+// Pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Departments from './pages/Departments';
@@ -11,12 +15,13 @@ import Contact from './pages/Contact';
 import StudentLife from './pages/StudentLife';
 import Gallery from './pages/Gallery';
 import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-
 import Research from './pages/Research';
 import Alumni from './pages/Alumni';
 import Placement from './pages/Placement';
+import NotFound from './pages/NotFound';
 
+// 🔥 IMPORTANT: Department Details
+import DepartmentDetails from "./components/features/DepartmentDetails";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -34,6 +39,7 @@ export default function App() {
     } else {
       root.classList.remove('dark');
     }
+
     try {
       localStorage.setItem('ashford-dark-mode', String(darkMode));
     } catch (_) {}
@@ -44,7 +50,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* Layout wrapper */}
         <Route element={<Layout darkMode={darkMode} toggleDark={toggleDark} />}>
+
+          {/* Main Pages */}
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/departments" element={<Departments />} />
@@ -58,9 +68,15 @@ export default function App() {
           <Route path="/research" element={<Research />} />
           <Route path="/alumni" element={<Alumni />} />
           <Route path="/placement" element={<Placement />} />
+
+          {/* 🔥 FIXED ROUTE (IMPORTANT) */}
+          <Route path="/department/:name" element={<DepartmentDetails />} />
+
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
 
         </Route>
+
       </Routes>
     </BrowserRouter>
   );
