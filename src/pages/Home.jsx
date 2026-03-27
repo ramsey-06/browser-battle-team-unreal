@@ -159,37 +159,34 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+            <div className="hidden xl:grid grid-cols-2 gap-4">
 
-            {/* Right: photo collage (xl+) */}
-            <div className="hidden xl:grid grid-cols-2 gap-4 h-[480px]">
-              <div className="flex flex-col gap-4 pt-10">
+              <div className="flex flex-col gap-4">
                 <img
                   src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80"
-                  alt="Ashford campus"
-                  className="rounded-2xl w-full flex-1 object-cover"
-                  style={{ maxHeight: '260px' }}
+                  alt="Campus"
+                  className="rounded-2xl w-full h-[260px] object-cover"
                 />
                 <img
                   src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
                   alt="Athletics"
-                  className="rounded-2xl w-full object-cover"
-                  style={{ height: '160px' }}
+                  className="rounded-2xl w-full h-[200px] object-cover"
                 />
               </div>
+
               <div className="flex flex-col gap-4">
                 <img
-                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80"
+                  src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=800"
                   alt="Students"
-                  className="rounded-2xl w-full object-cover"
-                  style={{ height: '160px' }}
+                  className="rounded-2xl w-full h-[200px] object-cover"
                 />
                 <img
                   src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80"
                   alt="Library"
-                  className="rounded-2xl w-full flex-1 object-cover"
-                  style={{ maxHeight: '260px' }}
+                  className="rounded-2xl w-full h-[260px] object-cover"
                 />
               </div>
+
             </div>
           </div>
 
